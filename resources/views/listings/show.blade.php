@@ -18,7 +18,8 @@
                         {!! $listing->content !!}
                     </div>
                     <div class="w-full md:w-1/4 pl-4">
-                        <img src="{{ $listing->logo }}" alt="{{ $listing->company }} logo" class="max-w-full mb-4">
+                        <img src="{{ $listing->image_path }}" alt="{{ $listing->company }} logo"
+                            class="max-w-full mb-4">
                         <p class="leading-relaxed text-base">
                             <strong>Location: </strong>{{ $listing->location }}<br>
                             <strong>Company: </strong>{{ $listing->company }}

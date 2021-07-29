@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class ListingController extends Controller
 {
@@ -97,12 +98,18 @@ class ListingController extends Controller
 
             $md = new \ParsedownExtra();
 
+            Image::make($request->logo)->resize(300, null, function($constrain){
+                $constrain->aspectRatio();
+            })->save(public_path('images/'.$request->logo->hashName()));
+
+            $validatedItems['logo'] = $request->logo->hashName();
+
             $listing = $user->listings()->create([
                 'title' => $validatedItems['title'],
                 'company' => $validatedItems['company'],
                 'location' => $validatedItems['location'],
                 'slug' => Str::slug('title').'-'.rand(1111, 9999),
-                'logo' => basename($validatedItems['logo']->store('public/images')),
+                'logo' => $validatedItems['logo'],
                 'apply_link' => $validatedItems['apply_link'],
                 'is_highlighted' => $request->filled('is_highlighted'),
                 'is_active' => true,

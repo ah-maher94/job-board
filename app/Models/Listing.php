@@ -14,6 +14,8 @@ class Listing extends Model
 
     protected $guarded = [];
 
+    protected $appends = ['image_path'];
+
     public function getRouteKeyName() {
         return 'slug';
     }
@@ -28,6 +30,10 @@ class Listing extends Model
 
     public function tags() {
         return $this->belongsToMany(Tag::class);
+    }
+
+    public function getImagePathAttribute() {
+        return asset('images/'. $this->logo);
     }
 
     public function scopeWhenSearch($query, $search) {
