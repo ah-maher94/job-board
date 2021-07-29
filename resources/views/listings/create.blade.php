@@ -78,10 +78,21 @@
                 </div>
                 <div class="mb-2 mx-2">
                     <input type="hidden" id="payment_method_id" name="payment_method_id" value="">
+                    <div class="flex">
+                        <x-label class="flex-1 text-center bg-gray-200 text-red-600 border-0 py-2 my-4 pl-5"
+                            value="card: 4242424242424242" />
+                        <x-label class="flex-1 text-center bg-gray-200 text-red-600 border-0 py-2 my-4"
+                            value="date: any future date" />
+                        <x-label class="flex-1 text-center bg-gray-200 text-red-600 border-0 py-2 my-4"
+                            value="cvc: any 3 digits" />
+                        <x-label class="flex-1 text-center bg-gray-200 text-red-600 border-0 py-2 my-4"
+                            value="zip: any 5 digits" />
+                    </div>
                     <button type="submit" id="form_submit"
                         class="block w-full items-center bg-indigo-500 text-white border-0 py-2 focus:outline-none hover:bg-indigo-600 rounded text-base mt-4 md:mt-0">Pay
                         + Continue</button>
                 </div>
+
             </form>
         </div>
     </section>
